@@ -7,7 +7,7 @@
 <ul>
     @foreach ($equipos as $equipo )
         <li>
-            <a href="#">
+            <a href="/equipos/{{$equipo->equipo_id}}">
                 {{$equipo->nombre}}
             </a>
         </li>

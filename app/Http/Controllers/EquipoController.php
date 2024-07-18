@@ -22,14 +22,14 @@ class EquipoController extends Controller
         $equipo->nombre = $request->nombre;
         $equipo->save();
         return redirect('/equipos');
+       
 
 
     }
-    public function show(){
-
-        /*$equipos = Equipo::all();
-
-        return view('equipos.create');*/
+    public function show($equipo){
+        $equipo = Equipo::find($equipo);
+        return view('equipos.show', compact('equipo'));
+       
     }
 }
 
