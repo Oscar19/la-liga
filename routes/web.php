@@ -10,11 +10,12 @@ Route::get('/', function () {
 Route::get('/equipos', [EquipoController::class, 'index']);
 
 Route::get('/equipos/create', [EquipoController::class, 'create']);
-Route::get('/equipos', [EquipoController::class, 'store']);
+Route::post('/equipos', [EquipoController::class, 'store']);
 Route::get('/equipos/{equipo}', [EquipoController::class, 'index']);
 
 Route::get('/partidos', [PartidoController::class, 'index']);
 /*Route::get('/equipos/create', function(){
     return "crear equipos";
 });*/
+
 

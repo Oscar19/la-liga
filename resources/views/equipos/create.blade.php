@@ -4,7 +4,8 @@
     
 
 <h1>Crear Equipo</h1>
-<form>
+<form action="/equipos" method="POST">
+    @csrf
     <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
             <label for="nombre_equipo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre del equipo</label>

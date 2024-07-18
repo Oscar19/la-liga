@@ -16,13 +16,20 @@ class EquipoController extends Controller
 
         return view('equipos.create');
     }
-    public function store(){
-        
+    public function store(Request $request){
+
+        $equipo = new Equipo();
+        $equipo->nombre = $request->nombre;
+        $equipo->save();
+        return redirect('/equipos');
+
+
     }
     public function show(){
 
-        $equipos = Equipo::all();
+        /*$equipos = Equipo::all();
 
-        return view('equipos.create');
+        return view('equipos.create');*/
     }
 }
+

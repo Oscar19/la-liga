@@ -13,3 +13,4 @@ class PartidoController extends Controller
         return view('partidos.index', compact('partidos'));
     }
 }
+
