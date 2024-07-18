@@ -17,3 +17,4 @@ Route::get('/partidos', [PartidoController::class, 'index']);
 /*Route::get('/equipos/create', function(){
     return "crear equipos";
 });*/
+
