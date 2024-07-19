@@ -13,6 +13,7 @@
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">@yield('title')</h1>
     </div>
 </section>
+<a class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400" style="position: fixed; top: 5%; right: 10px;"href="/">Inicio</a>
     @yield('content')
 </body>
 </html>
