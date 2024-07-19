@@ -18,9 +18,24 @@ class EquipoController extends Controller
     }
     public function store(Request $request){
 
+        $validatedData = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // Manejar la carga de la imagen
+        if ($request->hasFile('imagen')) {
+            $fileName = time() . '.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images'), $fileName);
+        } else {
+            $fileName = null;
+        }
+    
         $equipo = new Equipo();
-        $equipo->nombre = $request->nombre;
+        $equipo->nombre = $validatedData['nombre'];
+        $equipo->imagen = $fileName;
         $equipo->save();
+    
         return redirect('/equipos');
        
 
