@@ -66,4 +66,9 @@ class PartidoController extends Controller
 
         return redirect('/partidos')->with('success', 'Partido actualizado correctamente!');
     }
+    public function destroy($partido){
+        $partido = partido::find($partido);
+        $partido->delete();
+        return redirect('/partidos');
+    }
 }

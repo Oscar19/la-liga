@@ -75,6 +75,11 @@ class EquipoController extends Controller
     
         return redirect('/equipos')->with('success', 'Equipo actualizado correctamente!');
     }
+    public function destroy($equipo){
+        $equipo = Equipo::find($equipo);
+        $equipo->delete();
+        return redirect('/equipos');
+    }
     
 }
 
