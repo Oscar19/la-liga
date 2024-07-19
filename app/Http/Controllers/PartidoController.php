@@ -44,5 +44,26 @@ class PartidoController extends Controller
         return view('partidos.show', compact('partido'));
        
     }
-}
+    public function edit($id){
+        $partido = Partido::findOrFail($id);
+        $equipos = Equipo::all();
+        return view('partidos.edit', compact('partido', 'equipos'));
+    }
+    public function update(Request $request, $id)
+    {
+        $partido = Partido::find($id);
+        $validatedData = $request->validate([
+            'fecha' => 'required|date',
+            'equipo_local_id' => 'required|exists:equipos,equipo_id',
+            'equipo_visitante_id' => 'required|exists:equipos,equipo_id',
+        ]);
 
+        $partido->update([
+            'fecha' => $validatedData['fecha'],
+            'equipo_local_id' => $validatedData['equipo_local_id'],
+            'equipo_visitante_id' => $validatedData['equipo_visitante_id'],
+        ]);
+
+        return redirect('/partidos')->with('success', 'Partido actualizado correctamente!');
+    }
+}

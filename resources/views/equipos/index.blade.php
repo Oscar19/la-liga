@@ -6,10 +6,11 @@
 <a href="/equipos/create">Crear equipo</a>
 <ul>
     @foreach ($equipos as $equipo )
-    <div>
-        <h2>{{ $equipo->nombre }}</h2>
+    <a href="/equipos/{{$equipo->equipo_id}}">
+    <h2>{{ $equipo->nombre }}</h2>
         <img src="{{ asset('images/' . $equipo->imagen) }}" alt="{{ $equipo->nombre }}" style="max-width: 100px;">
-    </div>
+    
+    </a>   
     @endforeach
 </ul>
 

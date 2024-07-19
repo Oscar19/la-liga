@@ -23,7 +23,7 @@ class EquipoController extends Controller
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
-        // Manejar la carga de la imagen
+        
         if ($request->hasFile('imagen')) {
             $fileName = time() . '.' . $request->imagen->extension();
             $request->imagen->move(public_path('images'), $fileName);
@@ -46,5 +46,35 @@ class EquipoController extends Controller
         return view('equipos.show', compact('equipo'));
        
     }
+    public function edit($equipo){
+        $equipo = Equipo::find($equipo);
+        return view('equipos.edit', compact('equipo'));
+    }
+    public function update(Request $request, $id)
+    {
+        $equipo = Equipo::findOrFail($id);
+        $validatedData = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $equipo->nombre = $validatedData['nombre'];
+    
+        if ($request->hasFile('imagen')) {
+            
+            if ($equipo->imagen && file_exists(public_path('images/' . $equipo->imagen))) {
+                unlink(public_path('images/' . $equipo->imagen));
+            }
+    
+            $fileName = time() . '.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images'), $fileName);
+            $equipo->imagen = $fileName;
+        }
+    
+        $equipo->save();
+    
+        return redirect('/equipos')->with('success', 'Equipo actualizado correctamente!');
+    }
+    
 }
 
