@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Crear equipo')
+@section('title', 'Editar raza')
 @section('content')
     
-
-<h1>Editar {{$equipo->nombre}}</h1>
+<div class="max-w-xl mx-auto mt-16 flex w-full flex-col border rounded-lg bg-white p-8">
+<h1 class="mb-6 text-center text-2xl lg:text-4xl font-bold">Editar {{$equipo->nombre}}</h1>
 <form action="/equipos/{{$equipo->equipo_id}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -24,5 +24,5 @@
     </div>
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
 </form>
-
+</div>
 @endsection
